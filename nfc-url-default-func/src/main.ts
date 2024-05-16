@@ -4,10 +4,10 @@ parseUrl();
 
 function parseUrl() {
   if (location.search === "?dog") {
-    localStorage.setItem("dogUrl", "images/dog.jpg");
+    localStorage.setItem("dogUrl", "nfc-example/images/dog.jpg");
   }
   if (location.search === "?rat") {
-    localStorage.setItem("ratUrl", "images/rat.jpg");
+    localStorage.setItem("ratUrl", "nfc-example/images/rat.jpg");
   }
 }
 
@@ -15,7 +15,7 @@ const dogUrl = localStorage.getItem("dogUrl");
 const ratUrl = localStorage.getItem("ratUrl");
 
 if (dogUrl || ratUrl) {
-  contentDiv!.innerText = "";
+  contentDiv!.innerText = "Content";
 }
 
 
