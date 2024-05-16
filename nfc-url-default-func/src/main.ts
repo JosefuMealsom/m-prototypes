@@ -4,10 +4,10 @@ parseUrl();
 
 function parseUrl() {
   if (location.search === "?dog") {
-    localStorage.setItem("dogUrl", "/images/dog.jpg");
+    localStorage.setItem("dogUrl", "images/dog.jpg");
   }
   if (location.search === "?rat") {
-    localStorage.setItem("ratUrl", "/images/rat.jpg");
+    localStorage.setItem("ratUrl", "images/rat.jpg");
   }
 }
 
