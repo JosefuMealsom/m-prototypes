@@ -15,7 +15,7 @@ const dogUrl = localStorage.getItem("dogUrl");
 const ratUrl = localStorage.getItem("ratUrl");
 
 if (dogUrl || ratUrl) {
-  contentDiv!.innerText = "Content";
+  contentDiv!.innerText = "";
 }
 
 
@@ -32,6 +32,10 @@ if (ratUrl) {
 function getImage(imageUrl: string) {
   const img = new Image();
   img.src = imageUrl;
+  img.classList.add('contain');
+  img.classList.add('h-full');
+  img.classList.add('w-full');
+  img.classList.add('gap-2');
   return img;
 }
 
