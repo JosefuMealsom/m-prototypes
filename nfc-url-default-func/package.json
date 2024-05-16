@@ -7,7 +7,7 @@
   "description": "",
   "scripts": {
     "dev": "vite --host",
-    "build": "vite build && cp ./dist/index.html ../docs/nfc-example/index.html",
+    "build": "vite build && cp ./dist/index.html ../docs/nfc-example/index.html && cp -R ./dist/assets ../docs/nfc-example/ && cp -R ./images ../docs/nfc-example",
     "preview": "vite preview",
     "test": "yarn vitest"
   },
