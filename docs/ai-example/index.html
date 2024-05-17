@@ -7,16 +7,17 @@
     content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>NFC url example</title>
+  <title>Joe's desk classifier</title>
   <link rel="stylesheet" crossorigin href="/assets/index-DQJ7Koun.css">
 </head>
 
 <body>
-<div>Teachable Machine Image Model</div>
+<div>Joe's desk classifier</div>
 <button type="button" onclick="init()">Start</button>
+<canvas id="canvas" width=720 height=1280 style="width 100%; position: absolute; top: 0; left: 0; z-index: -1;"></canvas>
 <div id="webcam-container"></div>
-<div id="prediction-container" style="height: 5rem; font-size: 2rem;"></div>
-<div id="label-container"></div>
+<div id="prediction-container" style="height: 5rem; font-size: 2rem; color: white;"></div>
+<div id="label-container" style="color: white;"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-umd-min.js"></script>
@@ -27,7 +28,9 @@
     // the link to your model provided by Teachable Machine export panel
     const URL = "./model/";
 
-    let model, webcam, labelContainer, predictionContainer, maxPredictions;
+    let model, webcam, labelContainer, predictionContainer, maxPredictions, video;
+    let canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
 
     // Load the image model and setup the webcam
     async function init() {
@@ -49,19 +52,26 @@
         window.requestAnimationFrame(loop);
 
         // append elements to the DOM
-        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        // document.getElementById("webcam-container").appendChild(webcam.canvas);
         labelContainer = document.getElementById("label-container");
         for (let i = 0; i < maxPredictions; i++) { // and class labels
             labelContainer.appendChild(document.createElement("div"));
         }
 
         predictionContainer = document.getElementById("prediction-container");
+        setupFullScreenWebcam();
     }
 
     async function loop() {
-        webcam.update(); // update the webcam frame
+        webcam.update(); 
+        drawVideoToCanvas();
         await predict();
         window.requestAnimationFrame(loop);
+    }
+
+
+    function drawVideoToCanvas(){
+       context.drawImage(video, 0, 0);
     }
 
     // run the webcam image through the image model
@@ -84,6 +94,35 @@
           labelContainer.childNodes[i].innerHTML = classPrediction;
       }
     }
+
+    function setupFullScreenWebcam(){
+      video = document.createElement('video');
+
+      navigator.mediaDevices
+        .getUserMedia({ video: {facingMode: "environment"}, audio: false })
+        .then((stream) => {
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch((err) => {
+          console.error(`An error occurred: ${err}`);
+        });
+
+      video.addEventListener(
+        "canplay",
+        (ev) => {
+          if (!streaming) {
+            video.setAttribute("width", window.innerWidth);
+            video.setAttribute("height", window.innerHeight);
+            streaming = true;
+            canvas.width = video.width;
+            canvas.height = video.height;
+          }
+        },
+        false,
+      );
+    }
+
 </script>
 </body>
 </html>
