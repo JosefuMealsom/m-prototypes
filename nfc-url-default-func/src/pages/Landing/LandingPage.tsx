@@ -1,6 +1,6 @@
 import HeaderDark from "../../components/HeaderDark";
 import SavedContentService from "../../services/saved-content.service";
-import LandingPageInfoComponent from "../../components/LandingPageInfoComponent";
+import LandingPageInfoComponent from "./LandingPageInfoComponent";
 
 export default function LandingPage() {
   const scannedContent = SavedContentService.getAllSavedContent();

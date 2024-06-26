@@ -3,14 +3,14 @@
         "id": 0, 
         "title": "Save the penguins", 
         "description": "Welcome to the Penguin Preservation Alliance, where our passion for penguins drives everything we do. Nestled in the heart of coastal conservation efforts, we are dedicated to safeguarding the world's beloved flightless birds through research, rescue missions, and habitat protection. <br /> <br /> Founded on the belief that every penguin species deserves a sustainable future, our organization collaborates with scientists, environmentalists, and local communities to mitigate threats such as climate change, habitat loss, and pollution. Through rigorous field studies and innovative conservation projects, we strive to understand penguin behavior, monitor their populations, and advocate for policies that promote their well-being.", 
-        "heroImage": "../assets/penguins.jpg",
+        "heroImage": "penguins.jpg",
         "url": "/penguins"
     },
     {
         "id": 1, 
         "title": "Help reflower nature", 
         "description": "Join us in our efforts to enhance local biodiversity and support pollinator populations through our flower planting initiative. We focus on planting native wildflowers that thrive in our ecosystem, providing essential habitats for bees, butterflies, and other wildlife.<br /> <br /> By participating, you'll contribute directly to creating sustainable landscapes that benefit our environment and community. Whether you're new to gardening or an experienced enthusiast, there's a place for you in our conservation group. Contact us to learn more about how you can get involved and make a positive impact on our natural world.", 
-        "heroImage": "../assets/flowers.jpg",
+        "heroImage": "flowers.jpg",
         "url": "/flowers"
     }
 ]

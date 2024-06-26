@@ -7,7 +7,8 @@ import copyData from "../data/copy.json";
 
 export default function InfoPage(props: { contentId: number }) {
   const content = copyData.find((item) => item.id === props.contentId);
-  const imageUrl = new URL(`${content?.heroImage}`, import.meta.url).href;
+  const imageUrl = new URL(`../assets/${content?.heroImage}`, import.meta.url)
+    .href;
   const description = content?.description;
   const title = content?.title;
 
