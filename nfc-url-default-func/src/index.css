@@ -1,23 +1,14 @@
-.grid{
-  display: grid;
+@font-face {
+    font-family: 'source-sans';
+    src: url('assets/fonts/SourceSans3-Regular.ttf.woff');
+    font-weight: normal;
 }
 
-.grid-col-3{
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+:root {
+  --toastify-color-dark: #0099FA;
 }
 
-.contain{
-  object-fit: contain;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.w-full{
-  width: 100%;
-}
-
-.h-full{
-  height: 100%;
-}
-
-.gap-2{
-  gap: 0.5rem;
-}
