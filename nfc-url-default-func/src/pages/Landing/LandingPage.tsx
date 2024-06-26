@@ -11,7 +11,7 @@ export default function LandingPage() {
     }
 
     return scannedContent.map((itemId: number) => (
-      <div className="mb-2">
+      <div className="mb-2" key={itemId}>
         <LandingPageInfoComponent contentId={itemId} />
       </div>
     ));
