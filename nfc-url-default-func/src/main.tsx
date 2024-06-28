@@ -21,6 +21,14 @@ const router = createBrowserRouter([
         path: "/flowers",
         element: <InfoPage contentId={1} />,
       },
+      {
+        path: "/save-the-sea-slugs",
+        element: <InfoPage contentId={2} />,
+      },
+      {
+        path: "/help-tane",
+        element: <InfoPage contentId={3} />,
+      },
     ],
   },
 ]);

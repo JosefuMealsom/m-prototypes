@@ -1,9 +1,23 @@
+import { useEffect, useState } from "react";
 import HeaderDark from "../../components/HeaderDark";
 import SavedContentService from "../../services/saved-content.service";
 import LandingPageInfoComponent from "./LandingPageInfoComponent";
+import parseIdsFromQuery from "../../services/query-parser.service";
+import copyData from "../../data/copy.json";
 
 export default function LandingPage() {
-  const scannedContent = SavedContentService.getAllSavedContent();
+  const [scannedContent, setScannedContent] = useState(
+    SavedContentService.getAllSavedContent()
+  );
+
+  useEffect(() => {
+    const ids = parseIdsFromQuery();
+
+    for (const id of ids) {
+      SavedContentService.saveContent(id);
+    }
+    setScannedContent(SavedContentService.getAllSavedContent());
+  }, []);
 
   function renderListInfoComponents() {
     if (!scannedContent) {

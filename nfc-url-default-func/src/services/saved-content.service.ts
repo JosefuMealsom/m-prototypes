@@ -4,14 +4,16 @@ class SavedContentService {
 
     if (!content) {
       localStorage.setItem("savedContent", JSON.stringify([contentId]));
-    } else {
+      return;
+    }
+
+    if (!content.includes(contentId)) {
       content.push(contentId);
       localStorage.setItem("savedContent", JSON.stringify(content));
     }
   }
 
   findSavedContent(contentId: number) {
-    console.log(this.getAllSavedContent()?.includes(contentId));
     return this.getAllSavedContent()?.includes(contentId);
   }
 
