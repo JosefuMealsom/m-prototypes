@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 
 export default function LandingPageInfoComponent(props: { contentId: number }) {
   const content = copyData.find((item) => item.id === props.contentId);
-  // Currently doing this a bit hacky due to the relative paths
   const imageUrl = new URL(
     `../../assets/${content?.heroImage}`,
     import.meta.url
   ).href;
-  const description = content?.description;
   const title = content?.title;
 
   useEffect(() => {}, []);

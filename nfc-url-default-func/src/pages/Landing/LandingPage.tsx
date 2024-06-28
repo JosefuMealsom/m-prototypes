@@ -10,11 +10,14 @@ export default function LandingPage() {
     SavedContentService.getAllSavedContent()
   );
 
+  // Not the best place to put this, but ok for now
   useEffect(() => {
     const ids = parseIdsFromQuery();
 
     for (const id of ids) {
-      SavedContentService.saveContent(id);
+      if (!SavedContentService.findSavedContent(id)) {
+        SavedContentService.saveContent(id);
+      }
     }
     setScannedContent(SavedContentService.getAllSavedContent());
   }, []);
